@@ -1,0 +1,17 @@
+<h1>S8Calc</h1>
+
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <th class="text">Name</th>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td class="text"><%= link_to user.login, user %></td>
+    <td><%= link_to 'Remove', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<p>
+<%= link_to 'New user', new_user_path %>
+</p>

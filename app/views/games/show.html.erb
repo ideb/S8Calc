@@ -1,0 +1,58 @@
+<div id="main">
+<h1><%=h @game.name %></h1>
+<p>Insert the amount of buildings you own. Use the form on the right to suggest an optimal investment.</p>
+<% form_for(@game) do |f| %>
+<%= f.error_messages %>  
+<ul id="buildings">
+	<% f.fields_for(:buildings) do |e| -%>
+	<li class="building_<%=h e.object.id %>">
+		<% if e.object.suggested > 0 %><div class="suggested"><%= e.object.suggested %></div><% end %>
+		<div class="inner">
+		<p><strong><%=h e.object.name %></strong></p>
+		<%= e.label :owned %>
+		<% if current_user.nil? %>0
+			<% @owned = 0 %>
+		<% else %>
+			<% if e.object.ownerships.find_by_user_id(current_user).nil? %>
+			<% e.object.new_owner(current_user, e.object) %>
+			<% end %>
+			<% e.fields_for(:ownerships) do |ownership| %>
+				<% @owned = ownership.object.count %>
+				<%= ownership.text_field :count %>
+			<% end %>
+		<% end %>
+		</div>
+	</li>
+	<% end %>
+</ul>
+<div class="submit">
+	<%= submit_tag 'Save progress' %>
+</div>
+<% end %>
+</div>
+<div id="side">
+	<div class="inner">
+<h1>General info</h1>
+<p class="info">Fill in the fields below</p>
+<% form_for @game, :url => { :action => "suggest",:id => @game } do -%>
+<p class="form">
+	<% if current_user %><%= hidden_field_tag 'user', current_user.id %><% end %>
+	<%= label_tag :level %>
+	<%= text_field_tag :user_level, current_user ? @current_user.accounts.find_or_create_by_game_id(@game).level : 1 %>
+	<%= label_tag :cash %>
+	<%= text_field_tag :amount, @amount ? @amount : 0 %>
+	<div class="submit">
+	<%= submit_tag 'Calculate' %>
+	<input type="button" value="Assign" id="assign" />
+	</div>
+</p>
+<% end %>
+	</div>
+</div>
+<% if current_user and current_user.has_role? 'admin' %>
+<p style="clear:both;">
+<%= link_to 'Edit Game', edit_game_path(@game) %> |
+<%= link_to 'Back to Games', games_path %> |
+<%= link_to 'Manage Buildings', game_buildings_path(@game) %>
+</p>
+<% end %>

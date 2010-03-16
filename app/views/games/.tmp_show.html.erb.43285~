@@ -1,0 +1,36 @@
+<h1><%=h @game.name %></h1>
+
+<table cellpadding="0" cellspacing="0">
+	<tr>
+		<th>Id</th>
+		<th class="text">Name</th>
+		<th>Owned</th>
+		<th>Cost</th>
+		<th>Income</th>
+		<th>Level</th>
+	</tr>
+<% @game.buildings.each do |building| %>
+	<tr>
+		<td><%=h building.id %></td>
+		<td class="text"><%=link_to building.name, edit_game_building_path(@game) %></td>
+		<td>
+		<% if current_user and building.ownerships.find(:first, :conditions => { :building_id => building.id, :user_id => current_user.id }) %>
+			<%= building.ownerships.find(:first, :conditions => { :building_id => building.id, :user_id => current_user.id }).count %>
+			<% else %>0
+		<% end %>
+		</td>
+		<td><%=h building.cost %></td>
+		<td><%=h building.income %></td>
+		<td><%=h building.level %></td>
+	</tr>
+<% end %>
+
+</table>
+
+<% if current_user %>
+<p>
+<%= link_to 'Edit Game', edit_game_path(@game) %> |
+<%= link_to 'Back to Games', games_path %> |
+<%= link_to 'Manage Buildings', game_buildings_path(@game) %>
+</p>
+<% end %>

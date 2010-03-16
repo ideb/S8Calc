@@ -1,0 +1,88 @@
+html, body {min-height:100%;}
+body {margin:0;color: #333; background: url('/images/layout/body.png') bottom left repeat-x;}
+
+body, p, ol, ul, td {font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;  font-size: 80%; line-height: 1.7;}
+body * {font-size:100%}
+ul {margin:10px 0;}
+p, td {line-height:18px;}
+p {margin: 0 0 15px}
+th, td {text-align:right; padding:0 25px 0 0; border-bottom:1px solid #eee;}
+.text {text-align:left;}
+pre {  background-color: #eee;  padding: 10px;  font-size: 11px;}
+a {color:#33425b; border-bottom:1px dotted; text-decoration:none; outline:0;}
+
+
+/* Error message */
+.fieldWithErrors {  padding: 2px;  background-color: red;  display: table;}
+#errorExplanation {  width: 400px;  border: 2px solid red;  padding: 7px;  padding-bottom: 12px;  margin-bottom: 20px;  background-color: #f0f0f0;}
+#errorExplanation h2 {  text-align: left;  font-weight: bold;  padding: 5px 5px 5px 15px;  font-size: 12px;  margin: -7px;  background-color: #c00;  color: #fff;}
+#errorExplanation p {  color: #333;  margin-bottom: 0;  padding: 5px;}
+#errorExplanation ul li {  font-size: 12px;  list-style: square;}
+
+#wrapper {}
+#header { background: url('/images/layout/header.png') repeat-x bottom left;}
+#header .inner {margin:0 auto; position:relative; height:137px; width:960px; background: url('/images/layout/header_bottom.png') repeat-x bottom;}
+#games {position:absolute; left:457px; top:0; height:63px; background:url('/images/layout/select_left.png') no-repeat 0 -10px; overflow:hidden;}
+#games ul {margin:0; list-style:none; padding:13px 40px 15px 40px; background:url('/images/layout/select_right.png')  right -10px no-repeat; overflow:auto;}
+#games ul li {float:left; padding:0 8px 0 0;}
+#games ul li a {display:block; text-indent:-9999px; width:39px; height:39px; border:0;}
+#games ul li.imobsters a	{background:url('/images/layout/icon_small_imobsters.png') no-repeat;}
+#games ul li.kingdoms a		{background:url('/images/layout/icon_small_imobsters.png') no-repeat;}
+#games ul li.ninjas a		{background:url('/images/layout/icon_small_imobsters.png') no-repeat;}
+#games ul li.pets a			{background:url('/images/layout/icon_small_imobsters.png') no-repeat;}
+#games ul li.racing a		{background:url('/images/layout/icon_small_imobsters.png') no-repeat;}
+#games ul li.rockstars a	{background:url('/images/layout/icon_small_imobsters.png') no-repeat;}
+#games ul li.vampires a		{background:url('/images/layout/icon_small_imobsters.png') no-repeat;}
+#games ul li.worldwar a		{background:url('/images/layout/icon_small_imobsters.png') no-repeat;}
+#games ul li.zombies a		{background:url('/images/layout/icon_small_imobsters.png') no-repeat;}
+
+#nav {width: 100%; overflow: hidden; background: url('/images/layout/menu.png') 0px -184px  repeat-x;}
+#nav ul {list-style: none; list-style-type: none; border: none; margin: 0; padding: 0; float: left; border: none;}
+#nav ul li, #nav ul:hover li.active {background: none;float: left;margin: 0;padding: 0;border: none;position: relative; }
+#nav ul li:hover, #nav li.active, #nav ul:hover li.active:hover { background: url('/images/layout/menu.png') 0px -92px no-repeat;}
+#nav a, #nav a:visited, #nav ul:hover li.active a {background: none;display: block;float: left;margin: 0;padding: 0 8px;cursor: pointer;border: 0;color: #fff;font-weight: normal;text-decoration: none;}
+#nav li:hover a, #nav li.active a, #nav ul:hover li.active:hover a {background: url('/images/layout/menu.png') top right no-repeat; color: #000;}
+#nav a span {display: block; line-height: 43px; padding: 0 8px 25px 8px; margin-top: 6px;}
+#nav a:hover span {background: #FFFFFF;}
+#nav .user {float: right;overflow: hidden;padding: 0;margin: 0;}
+
+#content {width:940px; margin:0 auto;}
+#content.withside {background:url('/images/layout/border.gif') 740px 0 repeat-y;}
+#main {float:left; width:720px;}
+#side {float:left; width:219px;}
+#side .inner {padding:0 0 0 40px;}
+#side p.info { padding:0 0 15px; border-bottom:1px solid #eee; margin:0;}
+#side p.form {height:80px; border-bottom:1px solid #eee; margin:0;}
+#side p.form label {float:left; clear:both; display:block; width:50px; line-height:36px;}
+#side p.form input {float:left; width:123px; margin:8px 0 0; border:1px solid #333; padding: 2px;}
+#side .submit { padding:4px 0 0;}
+
+
+#buildings {list-style:none; margin:0; padding:0;}
+#buildings li {float:left; position:relative; width:360px; border-top:1px solid #eee; height:80px; background: no-repeat left 10px;}
+#buildings li .suggested {position:absolute; right:16px; top:3px; width:40px; line-height:40px; text-align:center; font-weight:bold; color:#fff; background:url('/images/layout/balloon.png') no-repeat;}
+#buildings li .inner {margin:10px 0 20px 140px; }
+#buildings li .tooltip {display:none; background:url('/images/layout/black_arrow.png') no-repeat; width:209px; height:122px; color:#fff; text-align:center; }
+#buildings li label {padding:0 20px 0 0;}
+#buildings li input {width:120px; border:1px solid #333; margin:0; padding: 2px; text-align:right}
+
+
+.submit {clear:both}
+
+/* iMobsters */
+#buildings li.building_1 {background-image:url('/images/artwork/imobsters/street-vendor.jpg'); }
+#buildings li.building_2 {background-image:url('/images/artwork/imobsters/shack.jpg'); }
+#buildings li.building_3 {background-image:url('/images/artwork/imobsters/convenience-store.jpg'); }
+#buildings li.building_4 {background-image:url('/images/artwork/imobsters/restaurant.jpg'); }
+#buildings li.building_5 {background-image:url('/images/artwork/imobsters/night-club.jpg'); }
+#buildings li.building_6 {background-image:url('/images/artwork/imobsters/luxury-condos.jpg'); }
+#buildings li.building_7 {background-image:url('/images/artwork/imobsters/shopping-mall.jpg'); }
+#buildings li.building_8 {background-image:url('/images/artwork/imobsters/resort-hotel.jpg'); }
+#buildings li.building_9 {background-image:url('/images/artwork/imobsters/office-tower.jpg'); }
+#buildings li.building_10 {background-image:url('/images/artwork/imobsters/casino.jpg'); }
+#buildings li.building_11 {background-image:url('/images/artwork/imobsters/horse-racing-circuit.jpg'); }
+#buildings li.building_12 {background-image:url('/images/artwork/imobsters/professional-basketball-team.jpg'); }
+
+h1 {margin:0 0 10px; font-size:20px; line-height:28px; color:#95850A; font-weight:normal; font-family:Georgia}
+h2 {margin:0;}
+h2.logo a {border:none; display:block; background: url('/images/layout/logo.png') no-repeat -6px -6px; height:63px; width:164px; text-indent:-9999px;}

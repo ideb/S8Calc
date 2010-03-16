@@ -1,0 +1,41 @@
+<h1><%=h @game.name %></h1>
+<% form_for(@game) do |f| %>
+<%= f.error_messages %>  
+<table cellpadding="0" cellspacing="0">
+	<tr>
+		<th>Id</th>
+		<th class="text">Name</th>
+		<th>Owned</th>
+		<th>Cost</th>
+		<th>Income</th>
+		<th>Level</th>
+	</tr>
+  	<% for building in @game.buildings %>
+	<% f.fields_for :buildings do |building_form| %>
+	<tr>
+		<td><%=h building.id %></td>
+		<td class="text"><%= building_form.text_field :name, :value => building.name %></td>
+		<% f.fields_for :ownerships do |ownerships_form| %>
+		<% if current_user %>
+			<% value = building.ownerships.find_or_create_by_user_id(current_user.id).count %>
+		<% end %>
+				<td><%= building_form.text_field :count, :value => value ? value : 0 %></td>
+		<% end %>
+		<td><%=h building.cost %></td>
+		<td><%=h building.income %></td>
+		<td><%=h building.level %></td>
+	</tr>
+	<% end %>
+	<% end %>
+</table>
+      <%= submit_tag 'Save' %>
+<% end %>
+
+
+<% if current_user %>
+<p>
+<%= link_to 'Edit Game', edit_game_path(@game) %> |
+<%= link_to 'Back to Games', games_path %> |
+<%= link_to 'Manage Buildings', game_buildings_path(@game) %>
+</p>
+<% end %>

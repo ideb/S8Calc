@@ -1,0 +1,18 @@
+<h1>S8Calc</h1>
+
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <th class="text">Name</th>
+  </tr>
+<% @games.each do |game| %>
+  <tr>
+    <td class="text"><%= link_to game.name, game %></td>
+    <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<p>
+<%= link_to 'New game', new_game_path %>
+</p>

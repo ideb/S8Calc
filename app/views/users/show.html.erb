@@ -1,0 +1,70 @@
+<h1>Buildings owned</h1>
+<table cellpadding="0" cellspacing="0">
+  <tr>
+  	<th>Id</th>
+    <th class="text">Name</th>
+    <th>Owned</th>
+    <th>Cost</th>
+    <th>Income</th>
+    <th>Level</th>
+  </tr>
+<% @user.buildings.each do |building| %>
+  <tr>
+    <td><%=h building.id %></td>
+    <td class="text"><%=h building.name %></td>
+	<td><%= @user.ownerships.find_by_building_id(building.id).count %></td>
+    <td><%=h building.cost %></td>
+    <td><%=h building.income %></td>
+    <td><%=h building.level %></td>
+  </tr>
+<% end %>
+</table>
+<% @user.accounts.each do |account| %>
+ <%=h account.game_id %>
+<% end %>
+<h1>User stats</h1>
+<table cellpadding="0" cellspacing="0">
+<tr>
+  <td class="text"><b>Login:</b></td>
+  <td class="text"><%=h @user.login %></td>
+</tr>
+ 
+<tr>
+  <td class="text"><b>User_id:</b></td>
+  <td class="text"><%=h @user.id %></td>
+</tr>
+
+<tr>
+  <td class="text"><b>Login count:</b></td>
+  <td class="text"><%=h @user.login_count %></td>
+</tr>
+ 
+<tr>
+  <td class="text"><b>Last request at:</b></td>
+  <td class="text"><%=h @user.last_request_at %></td>
+</tr>
+ 
+<tr>
+  <td class="text"><b>Last login at:</b></td>
+  <td class="text"><%=h @user.last_login_at %></td>
+</tr>
+ 
+<tr>
+  <td class="text"><b>Current login at:</b></td>
+  <td class="text"><%=h @user.current_login_at %></td>
+</tr>
+ 
+<tr>
+  <td class="text"><b>Last login ip:</b></td>
+  <td class="text"><%=h @user.last_login_ip %></td>
+</tr>
+ 
+<tr>
+  <td class="text"><b>Current login ip:</b></td>
+  <td class="text"><%=h @user.current_login_ip %></td>
+</tr>
+</table>
+ 
+<p>
+<%= link_to 'Edit', edit_account_path %>
+</p>

@@ -1,0 +1,23 @@
+<h1>Building in <%= @game.name %></h1>
+<% @building.users.each do |user| %>
+ <%=h user.login %> 
+<% end %>
+<p>
+  <b>Name:</b>
+  <%=h @building.name %>
+</p>
+<p>
+  <b>Cost:</b>
+  <%=h @building.cost %>
+</p>
+<p>
+  <b>Income:</b>
+  <%=h @building.income %>
+</p>
+<p>
+  <b>Level:</b>
+  <%=h @building.level %>
+</p>
+
+<%= link_to 'Edit', edit_game_building_path(@game, @building) %> |
+<%= link_to 'Back', game_buildings_path(@game) %>

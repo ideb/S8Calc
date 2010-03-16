@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  cost: 1
+  income: 1
+  level: 1
+  game: 
+
+two:
+  name: MyString
+  cost: 1
+  income: 1
+  level: 1
+  game: 

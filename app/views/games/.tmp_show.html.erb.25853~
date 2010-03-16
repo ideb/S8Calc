@@ -1,0 +1,58 @@
+<h1><%=h @game.name %></h1>
+<% form_for @game, :url => { :action => "suggest",:id => @game } do -%>
+	<%= hidden_field_tag 'user', current_user.id %>
+	<%= text_field_tag :amount %>
+	<%= submit_tag 'Suggest' %>
+<% end %>
+<% form_for(@game) do |f| %>
+<% if @roi %>
+<% @roi.each do |key, value| %>
+<%= key %>: <%= value %><br/>
+<% end %>
+<% end %>
+<%= f.error_messages %>  
+<table cellpadding="0" cellspacing="0">
+	<tr>
+		<th>Id</th>
+		<th class="text">Name</th>
+		<th>Owned</th>
+		<th>Suggested</th>
+		<th>Cost</th>
+		<th>Income</th>
+		<th>Roi</th>
+	</tr>
+	<% f.fields_for :buildings do |e| -%>
+		<tr>
+		<td><%=h e.object.id %></td>
+		<td class="text"><%= e.object.name %></td>
+		<td>
+		<% if current_user.nil? %>0
+		<% @owned = 0 %>
+		<% else %>
+			<% if e.object.ownerships.find_by_user_id(current_user).nil? %>
+			<% e.object.new_owner(current_user, e.object) %>
+			<% end %>
+			<% e.fields_for :ownerships do |ownership| %>
+				<% if ownership.object.user_id == current_user.id %>
+				<% @owned = ownership.object.count %>
+				<%= ownership.text_field :count %>
+				<% end %>
+			<% end %>
+		<% end %>
+		</td>
+		<td><%=h e.object.suggested %><% if @suggested %><%= @suggested.fetch(e.object.id, 0) %><% end %></td>
+		<td><%=h current_cost = e.object.cost+e.object.cost*0.1*@owned %></td>
+		<td><%=h e.object.income %></td>
+		<td><% if @roi %><%= "%0.6f" % @roi[e.object.id]%><% else %><%=h "%0.6f" % (e.object.income / current_cost) %><% end %></td>
+	</tr>
+	<% end %>
+</table>
+      <%= submit_tag 'Save' %>
+<% end %>
+<% if current_user %>
+<p>
+<%= link_to 'Edit Game', edit_game_path(@game) %> |
+<%= link_to 'Back to Games', games_path %> |
+<%= link_to 'Manage Buildings', game_buildings_path(@game) %>
+</p>
+<% end %>

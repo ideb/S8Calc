@@ -1,0 +1,23 @@
+<% form_for([@game, @building]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :cost %><br />
+    <%= f.text_field :cost %>
+  </p>
+  <p>
+    <%= f.label :income %><br />
+    <%= f.text_field :income %>
+  </p>
+  <p>
+    <%= f.label :level %><br />
+    <%= f.text_field :level %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>

@@ -1,0 +1,17 @@
+<tr>
+	<td><%=h building.id %></td>
+	<td class="text">
+		<%= f.text_field :name %>
+	</td>
+	<td>
+	<% f.fields_for :ownerships do |ownerships_form| %>
+		<% if current_user %>
+			<% value = building.ownerships.find_or_create_by_user_id(current_user.id).count %>
+		<% end %>
+		<%= ownerships_form.text_field :count, :value => value ? value : 0 %>
+	<% end %>
+	</td>
+	<td><%=h building.cost %></td>
+	<td><%=h building.income %></td>
+	<td><%=h building.level %></td>
+</tr>
